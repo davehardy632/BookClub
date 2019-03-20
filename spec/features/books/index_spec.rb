@@ -23,7 +23,7 @@ RSpec.describe "book_index", type: :feature do
     expect(page).to have_content(book_2.cover_image)
 
     expect(page).to have_content(book_3.title)
-    expect(page).to have_content("Authors: #{gaga.authors}")
+    expect(page).to have_content("Authors: #{gaga.name}")
     expect(page).to have_content("Pages: #{book_3.pages}")
     expect(page).to have_content("Year: #{book_3.year}")
     expect(page).to have_content(book_3.cover_image)
