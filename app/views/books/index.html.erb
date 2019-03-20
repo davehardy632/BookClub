@@ -2,8 +2,10 @@
 
 <% @books.each do |book| %>
   <h2><%= book.title %></h2>
-  <p>Authors: <%= book.authors %></p>
   <p>Pages: <%= book.pages %></p>
   <p>Year: <%= book.year %></p>
   <p> <%= book.cover_image %></p>
+  <p><% book.authors.each do |a| %></p>
+  <p>Authors: <%= a.name %> </p>
+  <% end %>
 <% end %>
