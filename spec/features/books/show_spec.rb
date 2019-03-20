@@ -7,7 +7,7 @@ RSpec.describe 'As a Visitor,' do
     @book_2 = @ted.books.create(title: "Book 2", pages: 340, year: 1988, cover_image: "www.book.com")
     @book_3 = @gaga.books.create(title: "Book 3", pages: 200, year: 1971, cover_image: "www.book.com")
   end
-  describe 'When I visit a book's show page,' do
+  describe "When I visit a book's show page," do
     it "shows me one book title, author, pages, pub year, large image" do
       visit book_path(@book_1)
 
