@@ -4,4 +4,7 @@
   <li><%= @book.pages %></li>
   <li><%= @book.year %></li>
   <li> <%= @book.cover_image %> </li>
+  <li> <% @book.authors.each do |a| %> </li>
+  <li> <%= a.name %> </li>
+<% end %>
 </ul>
