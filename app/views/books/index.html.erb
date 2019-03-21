@@ -4,7 +4,7 @@
   <h2><%= book.title %></h2>
   <p>Pages: <%= book.pages %></p>
   <p>Year: <%= book.year %></p>
-  <p> <%= book.cover_image %></p>
+<img src="<%= book.cover_image %>">
   <p><% book.authors.each do |a| %></p>
   <p>Authors: <%= a.name %> </p>
   <% end %>
