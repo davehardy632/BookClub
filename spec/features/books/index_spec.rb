@@ -8,7 +8,7 @@ RSpec.describe "book_index", type: :feature do
     book_2 = ted.books.create(title: "Book 2", pages: 340, year: 1988, cover_image: "www.book.com")
     book_3 = gaga.books.create(title: "Book 3", pages: 200, year: 1971, cover_image: "www.book.com")
 
-    visit "/books"
+    visit books_path
 
     expect(page).to have_content(book_1.title)
     expect(page).to have_content("Authors: #{gaga.name}")
