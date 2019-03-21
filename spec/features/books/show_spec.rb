@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'As a visitor' do
+  after :each do
+    Review.destroy_all
+    BookAuthor.destroy_all
+    Book.destroy_all
+    Author.destroy_all
+  end
   describe 'When I visit a books show page' do
     it 'shows all book field details' do
       author_1 = Author.create(name: 'JRR Tolkien')
@@ -21,7 +27,6 @@ RSpec.describe 'As a visitor' do
       review = book_1.reviews.create(title: "Review 1", rating: 3, user: "John", description: "Lord of the rings is dank.")
 
       visit book_path(book_1)
-
       expect(page).to have_content(review.title)
       expect(page).to have_content(review.rating)
       expect(page).to have_content(review.user)
@@ -29,6 +34,7 @@ RSpec.describe 'As a visitor' do
     end
   end
 end
+
 
 #
 # I also see a list of reviews for that book.
