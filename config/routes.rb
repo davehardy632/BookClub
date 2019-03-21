@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show] do
     resources :reviews, only: [:new, :create]
   end
+
+  get '/', to: 'welcome#index', as: 'welcome'
+
 end
