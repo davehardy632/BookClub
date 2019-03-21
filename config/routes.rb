@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   end
 
   get '/', to: 'welcome#index', as: 'welcome'
-
 end
