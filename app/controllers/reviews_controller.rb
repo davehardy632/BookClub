@@ -14,6 +14,13 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def user
+    Reviews
+        .joins(:book)
+        .select('reviews.*, books.title as book_title, book.cover_image')
+        .where(user: params[:user])
+        .entries
+  end
 
 
   private
