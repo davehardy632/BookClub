@@ -7,4 +7,10 @@
   <li> <% @book.authors.each do |a| %> </li>
   <li> <%= a.name %> </li>
 <% end %>
+<li> <%  @book.reviews.each do |r| %> </li>
+<li> <%= r.title %> </li>
+<li> <%= r.rating %></li>
+<li> <%= r.description %></li>
+<li> <%= r.user %></li>
+<% end %>
 </ul>

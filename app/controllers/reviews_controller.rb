@@ -5,8 +5,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    binding.pry
-    @review = Review.create(review_params)
+    @book = Book.find(params[:book_id])
+    rp = review_params
+    rp[:user] = rp[:user].titleize
+    @review = @book.reviews.create(review_params)
     if @review.save
       redirect_to book_path(@book)
     else
@@ -18,9 +20,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    rp = params.permit(:reviews).permit(:title, :user, :rating, :description)
-    rp[:user].titleize.strip!
-    # User names should be converted to Title Case before saving.
+    params.require(:review).permit(:title, :user, :rating, :description)
   end
 
 end

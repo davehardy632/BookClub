@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'As a Visitor' do
 
   describe 'When I visit a books show page' do
-    xit 'i see a link to add a new review for this book' do
+    it 'i see a link to add a new review for this book' do
       terry = Author.create(name:"Terry")
       book = terry.books.create(title:"Houses",pages:300, year:1984)
       visit book_path(book)
