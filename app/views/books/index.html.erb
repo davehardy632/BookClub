@@ -1,11 +1,15 @@
 <h1>All Books</h1>
-
 <% @books.each do |book| %>
-  <h2><%= book.title %></h2>
+
+<div id="book-#{book.id}">
+  <h2><%= link_to "#{book.title}", book_path(book) %></h2>
+  <h3>Average Rating: <%= book.average_rating.round(1) %> |
+    Total Reviews: <%= book.total_reviews %> </h3>
   <p>Pages: <%= book.pages %></p>
   <p>Year: <%= book.year %></p>
-  <p> <%= book.cover_image %></p>
+<img src="<%= book.cover_image %>">
   <p><% book.authors.each do |a| %></p>
   <p>Authors: <%= a.name %> </p>
   <% end %>
 <% end %>
+</div>

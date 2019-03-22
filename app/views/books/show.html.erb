@@ -1,3 +1,4 @@
+<h1><%= @book.title %> </h1>
 
 <h1> <%=  @book.title %></h1>
 <ul>
@@ -14,3 +15,12 @@
 <li> <%= r.user %></li>
 <% end %>
 </ul>
+
+    <% @book.authors.each do |author| %>
+    <li> <%= author.name %> </li>
+    <% end %>
+    <li> <%= @book.pages %> </li>
+    <li> <%= @book.year %> </li>
+    <li> <img src="<%= @book.cover_image %>" </li>
+    <% end %>
+

@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
+
   def new
-    @book = Book.find(params[:book_id])
-    @review = @book.reviews.new
+    @books = Book.find(params[:book_id])
+    @reviews = @books.reviews.new
   end
 
   def create
@@ -25,8 +26,8 @@ class ReviewsController < ApplicationController
 
 
   private
+
   def review_params
     params.require(:review).permit(:title, :user, :rating, :description)
   end
-
 end

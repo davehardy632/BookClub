@@ -7,5 +7,4 @@ Rails.application.routes.draw do
 
   get '/', to: 'welcome#index', as: 'welcome'
   get '/user/:user', to: 'reviews#user', as: 'user'
-
 end
