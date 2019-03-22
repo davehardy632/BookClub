@@ -1,0 +1,10 @@
+<% @user.each do |r| %>
+<ul>
+  <li> <%= r.title %> </li>
+  <li> <%= r.rating %> </li>
+  <li> <%= r.description %> </li>
+  <li> <%= r.created_at %> </li>
+  <li> <%= r.book_title %> </li>
+  <li> <%= r.cover_image  %> </li>
+</ul>
+<% end %>
