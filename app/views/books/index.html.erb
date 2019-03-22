@@ -3,7 +3,7 @@
 
 <div id="book-#{book.id}">
   <h2><%= link_to "#{book.title}", book_path(book) %></h2>
-  <h3>Average Rating: <%= book.average_rating.round(1) %> |
+  <h3>Average Rating: <%= book.average_rating %> |
     Total Reviews: <%= book.total_reviews %> </h3>
   <p>Pages: <%= book.pages %></p>
   <p>Year: <%= book.year %></p>
