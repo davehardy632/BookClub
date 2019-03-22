@@ -43,6 +43,7 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content(book_1.pages)
       expect(page).to have_content(book_1.year)
       expect(page).to have_xpath('//img[@src="https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg"]')
+      #alt tag or css
     end
 
     it "shows a list of reviews and review data" do
