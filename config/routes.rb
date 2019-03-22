@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   end
 
   get '/', to: 'welcome#index', as: 'welcome'
-
+  get '/user/:user', to: 'reviews#user', as: 'user'
 
 end
