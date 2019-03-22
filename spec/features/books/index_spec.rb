@@ -57,23 +57,20 @@ RSpec.describe "book_index", type: :feature do
     review_7 = book_3.reviews.create(title: "Review book 3", rating: 3, user: "Toby", description: "This book was a journey into the depths of my soul." )
     review_8 = book_3.reviews.create(title: "Review book 3", rating: 2, user: "Jennica", description: "Dont read this book to your children." )
     review_9 = book_3.reviews.create(title: "Review book 3", rating: 4, user: "David", description: "A thrilling experience." )
-    visit books_path
 
-    within("#book-#{book_1.id}") do
-    click_on "#{book_1.title}"
-    expect(current_path).to eq(book_path(book_1))
-    end
     visit books_path
-    within("#book-#{book_2.id}") do
-    click_on "#{book_2.title}"
-    expect(current_path).to eq(book_path(book_2))
-    end
+      click_on "#{book_1.title}"
+      expect(current_path).to eq(book_path(book_1))
+
     visit books_path
-    within("#book-#{book_3.id}") do
-    click_on "#{book_3.title}"
-    expect(current_path).to eq(book_path(book_3))
+      click_on "#{book_2.title}"
+      expect(current_path).to eq(book_path(book_2))
+
+    visit books_path
+      click_on "#{book_3.title}"
+      expect(current_path).to eq(book_path(book_3))
     end
-    end
+
   it 'shows book statistics' do
     gaga = Author.create(name:"Lady Gaga")
     ted = Author.create(name:"Ted Bundy")
@@ -92,17 +89,11 @@ RSpec.describe "book_index", type: :feature do
 
     visit books_path
 
-    within("#book-#{book_1.id}") do
       expect(page).to have_content("Average Rating: 3.0")
       expect(page).to have_content("Total Reviews: 3")
-    end
-    within("#book-#{book_2.id}") do
-      expect(page).to have_content("Average Rating: 2.6")
+      expect(page).to have_content("Average Rating: 2.7")
       expect(page).to have_content("Total Reviews: 3")
-    end
-    within("#book-#{book_3.id}") do
-    expect(page).to have_content("Average Rating: 3.0")
-    expect(page).to have_content("Total Reviews: 3")
-      end
+      expect(page).to have_content("Average Rating: 3.0")
+      expect(page).to have_content("Total Reviews: 3")
     end
   end
