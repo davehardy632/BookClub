@@ -10,6 +10,6 @@
 <li> <%= r.title %> </li>
 <li> <%= r.rating %></li>
 <li> <%= r.description %></li>
-<li> <%= r.user %></li>
+<li> <%=link_to "#{r.user}", user_path(r.user) %></li>
 <% end %>
 </ul>
