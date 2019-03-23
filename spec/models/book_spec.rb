@@ -35,5 +35,10 @@ describe Book, type: :model do
     actual = book_1.average_rating
     expect(actual).to eq(3.0)
     end
+    describe 'validations' do
+      it { should validate_uniqueness_of :title}
+      it { should validate_presence_of :pages}
+      it { should validate_presence_of :year}
+      end
+    end
   end
-end

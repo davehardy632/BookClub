@@ -9,18 +9,36 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-end
+  def new
+    @book = Book.new
+    # @author = @book.authors.create(params[:name])
+  end
 
-# As a Visitor,
-# When I visit a book's show page,
-# I see the following book information:
-# - the book title
-# - the author(s) who wrote the book
-# - the number of pages in the book
-# - the year the book was published
-# - a large image of the book cover
-#
-# I also see a list of reviews for that book.
-# Each review will have a title and user, a numeric rating
-# from 1 to 5, and text for the review itself, and all content
-# must be present for each review.
+  def create
+    @title = book_params[:title].titleize
+    @book = Book.new(book_params)
+    @book.title = @title
+    if @book.save
+
+    @a_params = author_params[:name].split(',')
+    @a_params.each do |name|
+      name = Author.find_or_create_by(name: name.titleize)
+      name.books << @book
+    end
+    redirect_to book_path(@book.id)
+    else
+    render :new
+    end
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:title, :pages, :year, :cover_image)
+  end
+
+  def author_params
+    params.require(:authors).permit(:name)
+  end
+
+end
