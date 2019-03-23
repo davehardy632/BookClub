@@ -1,6 +1,6 @@
 <h1>All Books</h1>
+<h2><%= link_to "Add Book", new_book_path %></h2>
 <% @books.each do |book| %>
-
 <div id="book-#{book.id}">
   <h2><%= link_to "#{book.title}", book_path(book) %></h2>
   <h3>Average Rating: <%= book.average_rating %> |
