@@ -89,11 +89,17 @@ RSpec.describe "book_index", type: :feature do
 
     visit books_path
 
-      expect(page).to have_content("Average Rating: 3.0")
-      expect(page).to have_content("Total Reviews: 3")
-      expect(page).to have_content("Average Rating: 2.7")
-      expect(page).to have_content("Total Reviews: 3")
-      expect(page).to have_content("Average Rating: 3.0")
-      expect(page).to have_content("Total Reviews: 3")
+      within("#book-#{book_1.id}") do
+        expect(page).to have_content("Average Rating: 3.0")
+        expect(page).to have_content("Total Reviews: 3")
+      end
+      within("#book-#{book_2.id}") do
+        expect(page).to have_content("Average Rating: 2.7")
+        expect(page).to have_content("Total Reviews: 3")
+      end
+      within("#book-#{book_3.id}") do
+        expect(page).to have_content("Average Rating: 3.0")
+        expect(page).to have_content("Total Reviews: 3")
+      end
     end
   end

@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
-    # binding.pry
     # @average_rating = @books.average_rating
   end
 
