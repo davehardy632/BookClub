@@ -109,6 +109,5 @@ RSpec.describe "book_index", type: :feature do
         expect(page).to have_content("Lowest Rated Books: #{@book_1.title}: 2.0 #{@book_2.title}: 2.7 #{@book_3.title}: 3.0")
         expect(page).to have_content("Most Active Users: David: 3 Jennica: 2 Joan: 2")
       end
-      save_and_open_page
     end
   end
