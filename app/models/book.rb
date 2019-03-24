@@ -6,8 +6,6 @@ class Book < ApplicationRecord
   def average_rating
     if self.reviews.any?
       self.reviews.average(:rating).round(1)
-    else
-      0
     end
   end
 

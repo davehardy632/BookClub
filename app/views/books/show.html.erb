@@ -13,3 +13,4 @@
 <li> <%=link_to "#{r.user}", user_path(r.user) %></li>
 <% end %>
 </ul>
+<h3> <%= link_to "New Review", new_book_review_path(@book.id) %></h3>
