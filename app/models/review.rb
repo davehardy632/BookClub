@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :book
 
-  # validates_uniqueness_of :user
+  validates_numericality_of :rating
+  validates_presence_of :user, :description, :rating, :title
 end

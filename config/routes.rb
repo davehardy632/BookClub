@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :destroy]
   end
 
+  # get '/books/:attribute/:order', to: 'books#index', locals{attributeas: 'books'
+
   get '/', to: 'welcome#index', as: 'welcome'
   get '/user/:user', to: 'reviews#user', as: 'user'
 end
