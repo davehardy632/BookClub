@@ -9,6 +9,9 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
+    @most_active_user = Review.most_active_user
+    @highest_rated = Book.highest_rated
+    @lowest_rated = Book.lowest_rated
   end
 
   def show

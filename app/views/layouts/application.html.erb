@@ -14,10 +14,7 @@
       <%= link_to "Home Page", welcome_path %>
       <%= link_to "All Books", books_path %>
     </nav>
-      <div class="container" >
-        <% flash.each do |flash_type, flash_message| %>
-      <div class="alert alert-<%= flash_type %>" role="alert"><%= flash_message %></div>
-        <% end %>
+
     <%= yield %>
   </body>
 </html>

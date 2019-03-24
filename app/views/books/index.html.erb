@@ -7,7 +7,21 @@
    <%= link_to "sort by reviews asc", books_path(sort: :reviews, order: :asc) %> |
    <%= link_to "sort by reviews desc", books_path(sort: :reviews, order: :desc) %> </p>
 </div>
-
+<div id="statistics">
+  <p>Highest Rated Books: <% @highest_rated.each do |book| %>
+      <%= book.title %>:
+      <%= book.avg_rating.round(1) %>
+      <% end %>
+    | Lowest Rated Books: <% @lowest_rated.each do |book| %>
+      <%= book.title %>:
+      <%= book.avg_rating.round(1) %>
+      <% end %>
+    | Most Active Users: <% @most_active_user.each do |user| %>
+      <%= user.user %>:
+      <%= user.num_reviews %>
+      <% end %>
+  </p>
+</div>
 <% @books.each do |book| %>
 <section class="books">
 <div id="book-<%= book.id %>">
@@ -16,7 +30,7 @@
     Total Reviews: <%= book.total_reviews %> </h3>
   <p>Pages: <%= book.pages %></p>
   <p>Year: <%= book.year %></p>
-<img src="<%= book.cover_image %>">
+<img class="img-thumbnail" src="<%= book.cover_image %>">
   <p><% book.authors.each do |a| %></p>
   <p>Authors: <%= a.name %> </p>
   <% end %>
