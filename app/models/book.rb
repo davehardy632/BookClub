@@ -4,7 +4,9 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
 
   def average_rating
-    self.reviews.average(:rating)
+    if self.reviews.any?
+      self.reviews.average(:rating).round(1)
+    end
   end
 
   def total_reviews

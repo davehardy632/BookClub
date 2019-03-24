@@ -1,7 +1,7 @@
 <h1>All Books</h1>
 <% @books.each do |book| %>
 
-<div id="book-#{book.id}">
+<div id="book-<%= book.id %>">
   <h2><%= link_to "#{book.title}", book_path(book) %></h2>
   <h3>Average Rating: <%= book.average_rating %> |
     Total Reviews: <%= book.total_reviews %> </h3>
