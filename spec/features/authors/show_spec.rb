@@ -59,7 +59,7 @@ RSpec.describe "book_index", type: :feature do
       fire_review_9 = book_3.reviews.create(title: "Fire review 3", rating: 3, user: "Roy", description: "It passed the time at least.")
 
       visit author_path(author)
-save_and_open_page
+
       expect(page).to have_content(pillars_review_1.title)
       expect(page).to have_content(pillars_review_1.rating)
       expect(page).to have_content(pillars_review_1.user)
