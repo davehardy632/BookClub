@@ -20,11 +20,22 @@ class ReviewsController < ApplicationController
 
 
   def user
+
     @user = Review
             .joins(:book)
             .select('reviews.*, books.cover_image, books.title as book_title')
             .where(user: params[:user]).entries
-  end
+    # @sort_old = @user.sort_by{|review| review.created_at}
+    # @sort_new = @user.sort_by{|review| review.created_at}.reverse
+    end
+
+  # def sort_old
+  #   @user = Review
+  #           .joins(:book)
+  #           .select('reviews.*, books.cover_image, books.title as book_title')
+  #           .where(user: params[:user]).entries
+  #   @old_rev = @user.
+  # end
 
 
   private

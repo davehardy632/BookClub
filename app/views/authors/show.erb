@@ -1,0 +1,14 @@
+<h1><%= @author.name %> Show Page</h1>
+<% @author.books.each do |book| %>
+<div id="book-id-<%=book.id%>">
+  <ul>
+    <li><%= book.title %></li>
+    <li><%= book.pages %></li>
+    <li>Published in <%= book.year %></li>
+    <li><img id="book-image-<%=book.id%>" src="<%= book.cover_image %>"></li>
+    <% book.return_authors(@author).each do |author| %>
+    <li><%= author.name %></li>
+    <% end %>
+  </ul>
+  </div>
+<% end %>
