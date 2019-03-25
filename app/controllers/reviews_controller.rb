@@ -18,29 +18,25 @@ class ReviewsController < ApplicationController
   end
 
 
-
-  def user
-
-    @user = Review
-            .joins(:book)
-            .select('reviews.*, books.cover_image, books.title as book_title')
-            .where(user: params[:user]).entries
-    # @sort_old = @user.sort_by{|review| review.created_at}
-    # @sort_new = @user.sort_by{|review| review.created_at}.reverse
+  def user_show
+    if params[:sort] == 'asc'
+      @user = Review.least_recent(params[:user])
+    elsif params[:sort] == 'desc'
+      @user = Review.most_recent(params[:user])
+    else
+      @user = Review.user(params[:user])
     end
 
-  # def sort_old
-  #   @user = Review
-  #           .joins(:book)
-  #           .select('reviews.*, books.cover_image, books.title as book_title')
-  #           .where(user: params[:user]).entries
-  #   @old_rev = @user.
-  # end
-
+  def destroy
+    r = Review.find(params[:id])
+    user = r.user
+    r.delete
+    redirect_to user_path(user)
+  end
 
   private
 
   def review_params
-    params.require(:review).permit(:title, :user, :rating, :description)
+    params.require(:review).permit(:title, :user, :rating, :description, :sort)
   end
 end
