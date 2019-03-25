@@ -20,6 +20,9 @@ class Book < ApplicationRecord
     reviews.order(rating: :desc).limit(3)
   end
 
+  def top_review
+    reviews.order(rating: :desc).limit(1)
+  end
 
   def return_authors(author)
     authors.where.not(id: author.id)
