@@ -13,6 +13,7 @@ class Review < ApplicationRecord
   end
 
   def self.user(user)
+    binding.pry
     Review.joins(:book)
           .select('reviews.*, books.cover_image, books.title as book_title')
           .where(user: user).entries
