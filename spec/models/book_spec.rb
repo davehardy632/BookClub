@@ -2,20 +2,20 @@ require "rails_helper"
 
 RSpec.describe Book, type: :model do
   before :each do
-    @gaga = Author.create(name:"Lady Gaga")
-    @ted = Author.create(name:"Ted Bundy")
+    @gaga = Author.create(name:"Gaga")
+    @ted = Author.create(name:"Bundy")
     @book_1 = @gaga.books.create(title: "Book 1", pages: 300, year: 1973, cover_image: "www.book.com")
     @book_2 = @ted.books.create(title: "Book 2", pages: 340, year: 1988, cover_image: "www.book.com")
     @book_3 = @gaga.books.create(title: "Book 3", pages: 200, year: 1971, cover_image: "www.book.com")
-    @review_1 = @book_1.reviews.create!(title: "Review book 1", rating: 5, user: "John", description: "This book was upsetting." )
-    @review_2 = @book_1.reviews.create!(title: "Review book 1", rating: 3, user: "Jennica", description: "This book was pretty cool, but I wish it had more violence." )
-    @review_3 = @book_1.reviews.create!(title: "Review book 1", rating: 1, user: "Larry", description: "This book was boring." )
-    @review_4 = @book_2.reviews.create!(title: "Review book 2", rating: 2, user: "Frank", description: "This book was rad." )
-    @review_5 = @book_2.reviews.create!(title: "Review book 2", rating: 2, user: "Willy Wonka", description: "This book was stupid, but I would read it again." )
-    @review_6 = @book_2.reviews.create!(title: "Review book 2", rating: 4, user: "David", description: "This book was my favorite." )
-    @review_7 = @book_3.reviews.create!(title: "Review book 3", rating: 0, user: "Toby", description: "This book was a journey into the depths of my soul." )
-    @review_8 = @book_3.reviews.create!(title: "Review book 3", rating: 0, user: "Jennica", description: "Dont read this book to your children." )
-    @review_9 = @book_2.reviews.create!(title: "Review book 2", rating: 0, user: "David", description: "A thrilling experience." )
+    @review_1 = @book_1.reviews.create!(title: "a Review book 1", rating: 5, user: "John", description: "This book was upsetting." )
+    @review_2 = @book_1.reviews.create!(title: "a Review book 1", rating: 3, user: "Jennica", description: "This book was pretty cool, but I wish it had more violence." )
+    @review_3 = @book_1.reviews.create!(title: "a Review book 1", rating: 1, user: "Larry", description: "This book was boring." )
+    @review_4 = @book_2.reviews.create!(title: "a Review book 2", rating: 2, user: "Frank", description: "This book was rad." )
+    @review_5 = @book_2.reviews.create!(title: "a Review book 2", rating: 2, user: "Willy Wonka", description: "This book was stupid, but I would read it again." )
+    @review_6 = @book_2.reviews.create!(title: "a Review book 2", rating: 4, user: "David", description: "This book was my favorite." )
+    @review_7 = @book_3.reviews.create!(title: "a Review book 3", rating: 0, user: "Toby", description: "This book was a journey into the depths of my soul." )
+    @review_8 = @book_3.reviews.create!(title: "a Review book 3", rating: 0, user: "Jennica", description: "Dont read this book to your children." )
+    @review_9 = @book_2.reviews.create!(title: "a Review book 2", rating: 0, user: "David", description: "A thrilling experience." )
   end
   describe "Relationships" do
     it { should have_many :book_authors}
@@ -27,33 +27,33 @@ RSpec.describe Book, type: :model do
     it { should validate_presence_of :pages}
     it { should validate_presence_of :year}
   end
+
   describe 'instance methods' do
     it 'returns average book rating' do
 
-      gaga = Author.create(name:"Lady Gaga")
-      ted = Author.create(name:"Ted Bundy")
-      book_1 = gaga.books.create(title: "Book 1", pages: 300, year: 1973, cover_image: "www.book.com")
-      book_2 = ted.books.create(title: "Book 2", pages: 340, year: 1988, cover_image: "www.book.com")
-      book_3 = gaga.books.create(title: "Book 3", pages: 200, year: 1971, cover_image: "www.book.com")
-      review_1 = book_1.reviews.create(title: "Review book 1", rating: 5, user: "John", description: "This book was upsetting." )
-      review_2 = book_1.reviews.create(title: "Review book 1", rating: 3, user: "Jennica", description: "This book was pretty cool, but I wish it had more violence." )
-      review_3 = book_1.reviews.create(title: "Review book 1", rating: 1, user: "Larry", description: "This book was boring." )
-      review_4 = book_2.reviews.create(title: "Review book 2", rating: 2, user: "Frank", description: "This book was rad." )
-      review_5 = book_2.reviews.create(title: "Review book 2", rating: 2, user: "Willy Wonka", description: "This book was stupid, but I would read it again." )
-      review_6 = book_2.reviews.create(title: "Review book 2", rating: 4, user: "David", description: "This book was my favorite." )
-      review_7 = book_3.reviews.create(title: "Review book 3", rating: 3, user: "Toby", description: "This book was a journey into the depths of my soul." )
-      review_8 = book_3.reviews.create(title: "Review book 3", rating: 2, user: "Jennica", description: "Dont read this book to your children." )
-      review_9 = book_3.reviews.create(title: "Review book 3", rating: 4, user: "David", description: "A thrilling experience." )
-
+      gaga = Author.create(name:"Lady G")
+      ted = Author.create(name:"Ted B")
+      book_1 = gaga.books.create(title: "a Book 1", pages: 300, year: 1973, cover_image: "www.book.com")
+      book_2 = ted.books.create(title: "a Book 2", pages: 340, year: 1988, cover_image: "www.book.com")
+      book_3 = gaga.books.create(title: "a Book 3", pages: 200, year: 1971, cover_image: "www.book.com")
+      review_1 = book_1.reviews.create(title: "the Review book 1", rating: 5, user: "John", description: "This book was upsetting." )
+      review_2 = book_1.reviews.create(title: "the Review book 1", rating: 3, user: "Jennica", description: "This book was pretty cool, but I wish it had more violence." )
+      review_3 = book_1.reviews.create(title: "the Review book 1", rating: 1, user: "Larry", description: "This book was boring." )
+      review_4 = book_2.reviews.create(title: "the Review book 2", rating: 2, user: "Frank", description: "This book was rad." )
+      review_5 = book_2.reviews.create(title: "the Review book 2", rating: 2, user: "Willy Wonka", description: "This book was stupid, but I would read it again." )
+      review_6 = book_2.reviews.create(title: "the Review book 2", rating: 4, user: "David", description: "This book was my favorite." )
+      review_7 = book_3.reviews.create(title: "the Review book 3", rating: 3, user: "Toby", description: "This book was a journey into the depths of my soul." )
+      review_8 = book_3.reviews.create(title: "the Review book 3", rating: 2, user: "Jennica", description: "Dont read this book to your children." )
+      review_9 = book_3.reviews.create(title: "the Review book 3", rating: 4, user: "David", description: "A thrilling experience." )
 
       actual = book_1.average_rating
       expect(actual).to eq(3.0)
-      expect(actual).to eq(expected)
+      # expect(actual).to eq(expected)
 
       actual = @book_1.average_rating
       expect(actual).to eq(3.0)
-    
     end
+
     it 'returns all other authors' do
       author = Author.create(name: "Ken Follet")
       author_2 = Author.create(name: "Michael Crichton")
@@ -75,11 +75,13 @@ RSpec.describe Book, type: :model do
       actual = @book_3.average_rating
       expect(actual).to eq(0.0)
     end
+
     it 'can calc total_reviews' do
       actual = @book_1.total_reviews
       expect(actual).to eq(3)
     end
   end
+
   describe 'class methods' do
     it 'can sort by avg rating asc' do
       actual = Book.sort_rating('asc')
@@ -113,13 +115,7 @@ RSpec.describe Book, type: :model do
     it 'can find the lowest rated books' do
       actual = Book.lowest_rated[0].title
       expect(actual).to eq(@book_3.title)
-
-    describe 'validations' do
-      it { should validate_uniqueness_of :title}
-      it { should validate_presence_of :pages}
-      it { should validate_presence_of :year}
-      end
-
     end
+
   end
 end

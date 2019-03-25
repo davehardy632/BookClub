@@ -23,6 +23,7 @@ class Book < ApplicationRecord
 
   def return_authors(author)
     authors.where.not(id: author.id)
+  end
 
   def self.sort_pages(order)
     Book.order(pages: :"#{order}")
@@ -56,6 +57,5 @@ class Book < ApplicationRecord
         .group(:title)
         .order('avg(reviews.rating)')
         .first(3)
-
   end
 end

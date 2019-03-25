@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
 
   def new
-    @books = Book.find(params[:book_id])
-    @reviews = @books.reviews.new
+    @book = Book.find(params[:book_id])
+    @review = @book.reviews.new
   end
 
   def create
@@ -19,6 +19,7 @@ class ReviewsController < ApplicationController
 
 
   def user_show
+    # binding.pry
     if params[:sort] == 'asc'
       @user = Review.least_recent(params[:user])
     elsif params[:sort] == 'desc'
@@ -26,6 +27,7 @@ class ReviewsController < ApplicationController
     else
       @user = Review.user(params[:user])
     end
+  end
 
   def destroy
     r = Review.find(params[:id])
