@@ -44,6 +44,25 @@ RSpec.describe "book_index", type: :feature do
     expect(page).to have_content("Year: #{@book_3.year}")
     expect(page).to have_xpath('//img[@src="https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg"]')
   end
+  it "author names are all links" do
+    visit books_path
+
+    within("#book-#{@book_1.id}") do
+    expect(page).to have_link(@gaga.name)
+    end
+    within("#book-#{@book_2.id}") do
+    expect(page).to have_link(@ted.name)
+    end
+    within("#book-#{@book_3.id}") do
+    expect(page).to have_link(@gaga.name)
+    end
+    within("#book-#{@book_4.id}") do
+    expect(page).to have_link(@jim.name)
+    end
+    within("#book-#{@book_5.id}") do
+    expect(page).to have_link(@jim.name)
+    end
+  end
   it 'book title is always a link' do
     visit books_path
       click_on "#{@book_1.title}"
@@ -120,7 +139,7 @@ RSpec.describe "book_index", type: :feature do
       expect(page.all('.books')[1]).to have_content("#{@book_2.title}")
       expect(page.all('.books')[2]).to have_content("#{@book_3.title}")
     end
-    it 'i see an area showing statistics about all books' do
+    xit 'I see an area showing statistics about all books' do
       visit books_path
       within("#statistics") do
         expect(page).to have_content("Highest Rated Books: #{@book_4.title}: 5.0 #{@book_5.title}: 5.0 #{@book_3.title}: 3.0")

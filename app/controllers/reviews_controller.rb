@@ -19,7 +19,6 @@ class ReviewsController < ApplicationController
 
 
   def user_show
-    # binding.pry
     if params[:sort] == 'asc'
       @user = Review.least_recent(params[:user])
     elsif params[:sort] == 'desc'

@@ -136,5 +136,16 @@ RSpec.describe 'As a visitor' do
 
       expect(page).to have_content("Average Rating: 3")
     end
+    it 'author names are links to show page' do
+      book = Book.create(title: "The Silence of the Lambs", pages: 388, year: 1988, cover_image: "https://images-na.ssl-images-amazon.com/images/I/81jpy6NRw2L.jpg")
+      author = book.authors.create(name: "Joe")
+      author_2 = book.authors.create(name: "Nancy")
+
+      visit book_path(book)
+
+      expect(page).to have_link(author.name)
+      expect(page).to have_link(author_2.name)
+
+    end
   end
 end
