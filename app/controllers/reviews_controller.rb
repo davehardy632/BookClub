@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
     end
   end
 
+
   def user_show
     if params[:sort] == 'asc'
       @user = Review.least_recent(params[:user])
@@ -25,6 +26,7 @@ class ReviewsController < ApplicationController
     else
       @user = Review.user(params[:user])
     end
+
   end
 
   def destroy

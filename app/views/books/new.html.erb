@@ -1,0 +1,13 @@
+<%= form_for @book do |f| %>
+    <p><%= f.label :title%><br/>
+    <%= f.text_field :title %></p>
+    <p><%= f.label :pages %><br/>
+    <%= f.text_field :pages %></p>
+    <p><%= f.label :year %><br/>
+    <%= f.text_field :year %></p>
+    <p><%= f.label :cover_image %><br/>
+    <%= f.text_field :cover_image %></p>
+
+Authors <input type="text" name="authors[name]" multiple>
+    <p><%= f.submit :Submit %></p>
+  <% end %>
