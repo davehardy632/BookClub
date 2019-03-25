@@ -96,11 +96,49 @@ RSpec.describe 'As a visitor' do
     expect(page).to_not have_content(book.cover_image)
     end
   end
+  describe 'when I visit a show page' do
+    it 'shows statistics on reviews, top 3 rated, bottom 3, average rating' do
+      book = Book.create(title: "The Silence of the Lambs", pages: 388, year: 1988, cover_image: "https://images-na.ssl-images-amazon.com/images/I/81jpy6NRw2L.jpg")
+      review_1 = book.reviews.create(title: "Good book review", rating: 5, user: "Scott Glenn", description: "This book was hella scary.")
+      review_2 = book.reviews.create(title: "Positive book review", rating: 5, user: "Ted Levine", description: "The movie wasn't this good.")
+      review_3 = book.reviews.create(title: "Almost perfect book review", rating: 4, user: "Jodie Foster", description: "I liked the movie better.")
+      review_4 = book.reviews.create(title: "Average book review", rating: 3, user: "Anthony Hopkins", description: "Disturbing and inappropriate.")
+      review_5 = book.reviews.create(title: "Another average book review", rating: 3, user: "Brooke Smith", description: "Boring read.")
+      review_6 = book.reviews.create(title: "Average book review again", rating: 3, user: "Anthony Heald", description: "This book was an unfortunate experience")
+      review_7 = book.reviews.create(title: "Poor book review", rating: 2, user: "Diane Baker", description: "This book made me sad")
+      review_8 = book.reviews.create(title: "Terrible book review", rating: 1, user: "Kasi Lemons", description: "This book was relatively bad")
+      review_9 = book.reviews.create(title: "Worst book review", rating: 1, user: "Frankie Faison", description: "This book was not very gooe")
+
+      visit book_path(book)
+
+      expect(page).to have_content(review_1.title)
+      expect(page).to have_content(review_1.rating)
+      expect(page).to have_content(review_1.user)
+      expect(page).to have_content(review_2.title)
+      expect(page).to have_content(review_2.rating)
+      expect(page).to have_content(review_2.user)
+      expect(page).to have_content(review_3.title)
+      expect(page).to have_content(review_3.rating)
+      expect(page).to have_content(review_3.user)
+
+      expect(page).to have_content(review_7.title)
+      expect(page).to have_content(review_7.rating)
+      expect(page).to have_content(review_7.user)
+      expect(page).to have_content(review_8.title)
+      expect(page).to have_content(review_8.rating)
+      expect(page).to have_content(review_8.user)
+      expect(page).to have_content(review_9.title)
+      expect(page).to have_content(review_9.rating)
+      expect(page).to have_content(review_9.user)
+
+      expect(page).to have_content("Average Rating: 3")
+    end
+  end
 end
+
 # As a Visitor,
 # When I visit a book's show page,
-# I see a link on the page to delete the book.
-# This link should return me to the book index page where I
-# no longer see this book listed.
-#
-# (your controller may need to delete other content before you can delete the book)
+# I see an area on the page for statistics about reviews:
+# - the top three reviews for this book (title, rating and user only)
+# - the bottom three reviews for this book  (title, rating and user only)
+# - the overall average rating of all reviews for this book

@@ -17,6 +17,8 @@ class ReviewsController < ApplicationController
     end
   end
 
+
+
   def user
     @user = Review
             .joins(:book)

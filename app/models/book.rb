@@ -16,6 +16,10 @@ class Book < ApplicationRecord
     self.reviews.count(:rating)
   end
 
+  def top_three_reviews
+    reviews.order(rating: :desc).limit(3)
+  end
+
   def self.sort_pages(order)
     Book.order(pages: :"#{order}")
   end
@@ -35,3 +39,12 @@ class Book < ApplicationRecord
   end
 
 end
+# Dog.order(age: :desc)	.order allows us to retrieve records ordered by specified attributes. :desc specifies descending order.
+# Dog.limit(2)
+
+# As a Visitor,
+# When I visit a book's show page,
+# I see an area on the page for statistics about reviews:
+# - the top three reviews for this book (title, rating and user only)
+# - the bottom three reviews for this book  (title, rating and user only)
+# - the overall average rating of all reviews for this book

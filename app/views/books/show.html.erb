@@ -1,4 +1,22 @@
 <h2><%= link_to "Delete Book", book_path(@book), method: :delete %></h2>
+<div>
+  <ul>
+
+      <li>Average Rating: <%= @book.average_rating %></li>
+      <li>top three reviews: </li>
+          <% @reviews.top_three.each do |review| %>
+          <ol><%= review.title %></ol>
+          <ol><%= review.rating %></ol>
+          <ol><%= review.user %></ol>
+          <% end %>
+          <li>Bottom three reviews:</li>
+          <% @reviews.bottom_three.each do |review| %>
+        <ol><%= review.title %></ol>
+        <ol><%= review.rating %></ol>
+        <ol><%= review.user %></ol>
+        <% end %>
+    </ul>
+  </div>
 <h1> <%=  @book.title %></h1>
 <ul>
   <li><%= @book.pages %></li>
@@ -7,11 +25,11 @@
   <li> <% @book.authors.each do |a| %> </li>
   <li> <%= a.name %> </li>
 <% end %>
-<li> <%  @book.reviews.each do |r| %> </li>
-<li> <%= r.title %> </li>
-<li> <%= r.rating %></li>
-<li> <%= r.description %></li>
-<li> <%=link_to "#{r.user}", user_path(r.user) %></li>
+  <%  @book.reviews.each do |r| %>
+  <li> <%= r.title %> </li>
+  <li> <%= r.rating %></li>
+  <li> <%= r.description %></li>
+  <li> <%=link_to "#{r.user}", user_path(r.user) %></li>
 <% end %>
 </ul>
 <h3> <%= link_to "New Review", new_book_review_path(@book.id) %></h3>
