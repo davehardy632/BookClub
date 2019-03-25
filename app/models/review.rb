@@ -11,4 +11,24 @@ class Review < ApplicationRecord
           .first(3)
   end
 
+  def self.user(user)
+    Review.joins(:book)
+          .select('reviews.*, books.cover_image, books.title as book_title')
+          .where(user: user).entries
+  end
+
+  def self.most_recent(user)
+    Review.joins(:book)
+          .select('reviews.*, books.cover_image, books.title as book_title')
+          .where(user: user)
+          .order(created_at: :desc).entries
+  end
+
+  def self.least_recent(user)
+    Review.joins(:book)
+          .select('reviews.*, books.cover_image, books.title as book_title')
+          .where(user: user)
+          .order(created_at: :asc).entries
+  end
+
 end

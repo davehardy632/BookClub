@@ -17,11 +17,14 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def user
-    @user = Review
-            .joins(:book)
-            .select('reviews.*, books.cover_image, books.title as book_title')
-            .where(user: params[:user]).entries
+  def user_show
+    if params[:sort] == 'asc'
+      @user = Review.least_recent(params[:user])
+    elsif params[:sort] == 'desc'
+      @user = Review.most_recent(params[:user])
+    else
+      @user = Review.user(params[:user])
+    end
   end
 
   def destroy
@@ -34,6 +37,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :user, :rating, :description)
+    params.require(:review).permit(:title, :user, :rating, :description, :sort)
   end
 end
