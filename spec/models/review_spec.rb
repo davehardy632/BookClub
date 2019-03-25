@@ -27,16 +27,16 @@ describe Review, type: :model do
     it { should belong_to :book }
   end
 
-  xdescribe 'validations' do
+  describe 'validations' do
     # it { should validate_uniqueness_of :user }
 
     # actual = Review.create(title: 'House of Leaves Review', description: 'It was good.', rating: 3, user: 'Bill')
     # expect(actual.user).to eq(actual.user.titleize)
   end
   describe 'class methods' do
-    xit 'can calc most active user' do
-      actual = Review.most_active_user
-      expect(actual).to eq('David Jennica Joan')
+    it 'can calc most active user' do
+      actual = Review.most_active_user[0].user
+      expect(actual).to eq(@review_9.user)
     end
   end
 end

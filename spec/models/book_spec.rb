@@ -62,5 +62,13 @@ RSpec.describe Book, type: :model do
       actual = Book.sort_pages('desc')
       expect(actual).to eq([@book_2, @book_1, @book_3])
     end
+    it 'can find the highest rated books' do
+      actual = Book.highest_rated[0].title
+      expect(actual).to eq(@book_1.title)
+    end
+    it 'can find the lowest rated books' do
+      actual = Book.lowest_rated[0].title
+      expect(actual).to eq(@book_3.title)
+    end
   end
 end
