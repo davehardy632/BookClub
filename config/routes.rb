@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   # get '/books/:attribute/:order', to: 'books#index', locals{attributeas: 'books'
 
   get '/', to: 'welcome#index', as: 'welcome'
-  get '/user/:user', to: 'reviews#user', as: 'user'
+
+  get '/user/:user', to: 'reviews#user_show', as: 'user'
+  get '/user/:user', to: 'reviews#user_show', as: 'user_asc'#, defaults: { user: :user }
+  get '/user/:user', to: 'reviews#user_show', as: 'user_desc'
 end
+
