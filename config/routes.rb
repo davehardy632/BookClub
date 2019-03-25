@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :destroy]
   end
 
-  # get '/books/:attribute/:order', to: 'books#index', locals{attributeas: 'books'
+  resources :authors, only: [:show]
 
   get '/', to: 'welcome#index', as: 'welcome'
 
@@ -12,4 +12,3 @@ Rails.application.routes.draw do
   get '/user/:user', to: 'reviews#user_show', as: 'user_asc'#, defaults: { user: :user }
   get '/user/:user', to: 'reviews#user_show', as: 'user_desc'
 end
-

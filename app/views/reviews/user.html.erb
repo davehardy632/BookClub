@@ -1,0 +1,16 @@
+<div id="sort">
+  <p> <%= link_to "Sort by Most Recent", user_desc_path(user: @user.first.user, sort: 'asc') %> |
+      <%= link_to "Sort by Least Recent", user_asc_path(user: @user.first.user, sort: 'desc') %>
+  </p>
+</div>
+<% @user.each do |r| %>
+<div class="user-info-<%="#{r.id}"%>" >
+  <p id="review-title"> Review Title: <%= r.title %> </p>
+  <p> Rating(1-5): <%= r.rating %> </p>
+  <p> Description: <%= r.description %> </p>
+  <p> Created On: <%= r.created_at %> </p>
+  <p> Book Title: <%= r.book_title %> </p>
+  <p> <img src="<%= r.cover_image  %>" alt="@book"> </p>
+  <p class="remove"> <%= link_to "Delete Review", book_review_path(r.book_id, r.id), method: :delete %> </p>
+<% end %>
+</div>

@@ -7,6 +7,11 @@ RSpec.describe 'as a visitor' do
     @neil = Author.create(name: 'Neil Gaiman')
     @leaves = @mark.books.create(title: 'House of Leaves', pages: 709, year: 2000)
     @omens = Book.create(title: 'Good Omens', pages: 288, year: 1990, authors: [@terry, @neil])
+
+    @r3 = Review.create!(title: 'Good Omens Review', description: 'It was amazing.', rating: 5, book: Book.find_by(title: 'Good Omens'), user: 'Bill', created_at: 1.day.ago)
+    @r1 = Review.create!(title: 'House of Leaves Review', description: 'It was good.', rating: 3, book: Book.find_by(title: 'House of Leaves'), user: 'Bill', created_at: 3.days.ago)
+    @r2 = Review.create!(title: 'House of Leaves Review 2', description: 'It was great.', rating: 4, book: Book.find_by(title: 'House of Leaves'), user: 'Sandy')
+
     @knight = Book.create(title: 'Hard Knight', pages: 288, year: 1990, authors: [@mark])
     @r1 = Review.create(title: 'House of Leaves Review', description: 'It was good.', rating: 3, book: Book.find_by(title: 'House of Leaves'), user: 'Bill', created_at: 1.days.ago)
     @r2 = Review.create(title: 'House of Leaves Review 2', description: 'It was great.', rating: 4, book: Book.find_by(title: 'House of Leaves'), user: 'Sandy', created_at: 2.days.ago)
@@ -50,5 +55,5 @@ RSpec.describe 'as a visitor' do
         expect(page.all('#review-title')[2]).to have_content("#{@r1.title}")
       # end
     end
+
   end
-end
