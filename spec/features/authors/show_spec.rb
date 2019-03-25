@@ -60,6 +60,7 @@ RSpec.describe "book_index", type: :feature do
 
       visit author_path(author)
 
+
       expect(page).to have_content(pillars_review_1)
       expect(page).to have_content(giants_review_4)
       expect(page).to have_content(fire_review_7)

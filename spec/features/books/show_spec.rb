@@ -26,22 +26,24 @@ RSpec.describe 'As a visitor' do
       expect(current_path).to eq(book_path(book))
       expect(page).to have_content('had to read it twice, it was so good')
     end
-    xit 'i see a link to add a new review for this book - sad path' do
+    it 'i see a link to add a new review for this book - sad path' do
       terry = Author.create(name:"Terry")
-      book = terry.books.create(title:"Houses",pages:300, year:1984)
+      book = terry.books.create!(title:"Houses",pages:300, year:1984)
       visit book_path(book)
 
       expect(page).to have_content(book.title)
 
       visit new_book_review_path(book.id)
 
-      fill_in :review_title, with: 'a '
-      fill_in :review_user, with: ''
-      fill_in :review_rating, with: 0.0
-      fill_in :review_description, with: 'had to read it twice, it was so good'
+      # fill_in :review_title, with: 'a '
+      # fill_in :review_rating, with: 0.0
+      # fill_in :review_description, with: 'had to read it twice, it was so good'
 
       click_on "Create Review" #When the form is submitted, I should return to that book's
-      expect(current_path).to eq(new_book_review_path(book.id))
+      expect(current_path).to eq(book_reviews_path(book.id))
+      expect(page).to have_content("All Books User can't be blank")
+      expect(page).to have_content("Description can't be blank")
+      expect(page).to have_content("Title can't be blank")
     end
   end
   describe 'When I visit a books show page' do
@@ -70,6 +72,7 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content(review.user)
       expect(page).to have_content(review.description)
     end
+
     it 'links to show page when user is clicked' do
       author_1 = Author.create(name: 'JRR Tolkien')
       book_1 = author_1.books.create(title: 'Lord of The Rings', pages: 430, year: 1930, cover_image: "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg")
@@ -135,10 +138,3 @@ RSpec.describe 'As a visitor' do
     end
   end
 end
-
-# As a Visitor,
-# When I visit a book's show page,
-# I see an area on the page for statistics about reviews:
-# - the top three reviews for this book (title, rating and user only)
-# - the bottom three reviews for this book  (title, rating and user only)
-# - the overall average rating of all reviews for this book

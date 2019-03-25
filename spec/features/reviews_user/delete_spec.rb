@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe 'As a Visitor' do
   describe 'When I visit a users show page' do
-    xit 'I see a link next to each review to delete the review' do
+    it 'I see a link next to each review to delete the review' do
       terry = Author.create(name:"Terry")
       book1 = terry.books.create(title:"Houses",pages:300, year:1984)
       book2 = terry.books.create(title:"Houses II",pages:300, year:1985)

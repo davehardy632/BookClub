@@ -60,11 +60,11 @@ RSpec.describe "book_index", type: :feature do
 
   it 'shows book statistics' do
 
-    gaga = Author.create(name:"Lady Gaga")
-    ted = Author.create(name:"Ted Bundy")
-    book_1 = gaga.books.create(title: "Book 1", pages: 300, year: 1973, cover_image: "www.book.com")
-    book_2 = ted.books.create(title: "Book 2", pages: 340, year: 1988, cover_image: "www.book.com")
-    book_3 = gaga.books.create(title: "Book 3", pages: 200, year: 1971, cover_image: "www.book.com")
+    gaga = Author.create!(name:"Lady")
+    ted = Author.create!(name:"Ted")
+    book_1 = gaga.books.create(title: "rev Book 1", pages: 300, year: 1973, cover_image: "www.book.com")
+    book_2 = ted.books.create(title: "rev Book 2", pages: 340, year: 1988, cover_image: "www.book.com")
+    book_3 = gaga.books.create(title: "rev Book 3", pages: 200, year: 1971, cover_image: "www.book.com")
     # review_1 = book_1.reviews.create(title: "Review book 1", rating: 5, user: "John", description: "This book was upsetting." )
     review_2 = book_1.reviews.create(title: "Review book 1", rating: 3, user: "Jennica", description: "This book was pretty cool, but I wish it had more violence." )
     review_3 = book_1.reviews.create(title: "Review book 1", rating: 1, user: "Larry", description: "This book was boring." )
