@@ -1,5 +1,8 @@
 class Review < ApplicationRecord
   belongs_to :book
+  
+  validates_numericality_of :rating
+  validates_presence_of :user, :description, :rating, :title
 
   # def reviews_by_rating(book, direction)
   #    book.reviews.order(rating: direction).limit(3)
@@ -16,4 +19,5 @@ class Review < ApplicationRecord
   def self.bottom_three
     order(rating: :asc).limit(3)
   end
+ 
 end

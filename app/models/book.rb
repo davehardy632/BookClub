@@ -7,7 +7,9 @@ class Book < ApplicationRecord
   validates_presence_of :year
 
   def average_rating
-    reviews.average(:rating)
+    if self.reviews.any?
+      self.reviews.average(:rating).round(1)
+    end
   end
 
   def total_reviews
@@ -17,6 +19,25 @@ class Book < ApplicationRecord
   def top_three_reviews
     reviews.order(rating: :desc).limit(3)
   end
+
+  def self.sort_pages(order)
+    Book.order(pages: :"#{order}")
+  end
+
+  def self.sort_reviews(order)
+    Book.left_outer_joins(:reviews)
+        .select('count(reviews.rating)as total_reviews, books.*')
+        .group('books.id')
+        .order("count(reviews.rating) #{order}")
+  end
+
+  def self.sort_rating(order)
+    Book.left_outer_joins(:reviews)
+        .select('books.*, coalesce(avg(reviews.rating),0) as avg_rating')
+        .group('books.id')
+        .order("coalesce(avg(reviews.rating),0) #{order}")
+  end
+
 end
 # Dog.order(age: :desc)	.order allows us to retrieve records ordered by specified attributes. :desc specifies descending order.
 # Dog.limit(2)

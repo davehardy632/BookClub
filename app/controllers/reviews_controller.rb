@@ -26,6 +26,12 @@ class ReviewsController < ApplicationController
             .where(user: params[:user]).entries
   end
 
+  def destroy
+    r = Review.find(params[:id])
+    user = r.user
+    r.delete
+    redirect_to user_path(user)
+  end
 
   private
 
