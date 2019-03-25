@@ -7,7 +7,7 @@
    <%= link_to "sort by reviews asc", books_path(sort: :reviews, order: :asc) %> |
    <%= link_to "sort by reviews desc", books_path(sort: :reviews, order: :desc) %> </p>
 </div>
-
+<h2><%= link_to "Add Book", new_book_path %></h2>
 <% @books.each do |book| %>
 <section class="books">
 <div id="book-<%= book.id %>">

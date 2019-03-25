@@ -25,7 +25,6 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.title = @title
     if @book.save
-
     @a_params = author_params[:name].split(',')
     @a_params.each do |name|
       name = Author.find_or_create_by(name: name.titleize)
@@ -35,6 +34,11 @@ class BooksController < ApplicationController
     else
     render :new
     end
+  end
+
+  def destroy
+    @book = Book.find(params[:id]).destroy
+    redirect_to books_path
   end
 
   private

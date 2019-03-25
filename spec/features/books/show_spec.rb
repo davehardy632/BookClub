@@ -82,11 +82,25 @@ RSpec.describe 'As a visitor' do
       expect(current_path).to eq(user_path(review.user))
     end
   end
+  describe 'when I visit a show page' do
+    it 'can delete a book' do
+      book = Book.create(title: "Book Title", pages: 354, year: 1976, cover_image: "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg")
+
+    visit book_path(book)
+
+    click_on "Delete Book"
+
+    expect(page).to_not have_content(book.title)
+    expect(page).to_not have_content(book.pages)
+    expect(page).to_not have_content(book.year)
+    expect(page).to_not have_content(book.cover_image)
+    end
+  end
 end
-
-
+# As a Visitor,
+# When I visit a book's show page,
+# I see a link on the page to delete the book.
+# This link should return me to the book index page where I
+# no longer see this book listed.
 #
-# I also see a list of reviews for that book.
-# Each review will have a title and user, a numeric rating
-# from 1 to 5, and text for the review itself, and all content
-# must be present for each review.
+# (your controller may need to delete other content before you can delete the book)

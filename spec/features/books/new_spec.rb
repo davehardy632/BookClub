@@ -9,9 +9,13 @@ RSpec.describe 'I can fill in a form and add a new book' do
     name = 'gaga'
     name_2 = 'john'
 
-    names = "gaga, john"
+    names = "gaga, john" 
 
-    visit new_book_path
+    visit books_path
+
+    click_on "Add Book"
+
+    expect(current_path).to  eq(new_book_path)
 
     fill_in "book[title]", with: new_book.title
     fill_in "book[pages]", with: new_book.pages
