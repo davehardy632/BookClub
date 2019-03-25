@@ -23,13 +23,26 @@ RSpec.describe 'As a visitor' do
       fill_in :review_description, with: 'had to read it twice, it was so good'
 
       click_on "Create Review" #When the form is submitted, I should return to that book's
-
       expect(current_path).to eq(book_path(book))
-
       expect(page).to have_content('had to read it twice, it was so good')
-
     end
+    xit 'i see a link to add a new review for this book - sad path' do
+      terry = Author.create(name:"Terry")
+      book = terry.books.create(title:"Houses",pages:300, year:1984)
+      visit book_path(book)
 
+      expect(page).to have_content(book.title)
+
+      visit new_book_review_path(book.id)
+
+      fill_in :review_title, with: 'a '
+      fill_in :review_user, with: ''
+      fill_in :review_rating, with: 0.0
+      fill_in :review_description, with: 'had to read it twice, it was so good'
+
+      click_on "Create Review" #When the form is submitted, I should return to that book's
+      expect(current_path).to eq(new_book_review_path(book.id))
+    end
   end
   describe 'When I visit a books show page' do
     it 'shows all book field details' do
