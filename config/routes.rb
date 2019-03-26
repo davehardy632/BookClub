@@ -4,11 +4,11 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :destroy]
   end
 
-  resources :authors, only: [:show]
+  resources :authors, only: [:show, :destroy]
 
   get '/', to: 'welcome#index', as: 'welcome'
 
   get '/user/:user', to: 'reviews#user_show', as: 'user'
-  get '/user/:user', to: 'reviews#user_show', as: 'user_asc'#, defaults: { user: :user }
-  get '/user/:user', to: 'reviews#user_show', as: 'user_desc'
+  # get '/user/:user', to: 'reviews#user_show', as: 'user_asc'#, defaults: { user: :user }
+  # get '/user/:user', to: 'reviews#user_show', as: 'user_desc'
 end
