@@ -4,6 +4,11 @@
   <ul>
     <li><%= book.title %></li>
     <li><%= book.pages %></li>
+    <% book.top_review.each do |review| %>
+    <li><%= review.title %></li>
+    <li><%= review.rating %></li>
+    <li><%= review.user %></li>
+    <% end %>
     <li>Published in <%= book.year %></li>
     <li><img id="book-image-<%=book.id%>" src="<%= book.cover_image %>"></li>
     <% book.return_authors(@author).each do |author| %>

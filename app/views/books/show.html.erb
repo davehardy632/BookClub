@@ -22,8 +22,8 @@
   <li><%= @book.pages %></li>
   <li><%= @book.year %></li>
   <li> <img src="<%= @book.cover_image %>" alt="book"> </li>
-  <li> <% @book.authors.each do |a| %> </li>
-  <li> <%= a.name %> </li>
+  <li> <% @book.authors.each do |author| %> </li>
+  <li> <%= link_to author.name, author_path(author) %> </li>
 <% end %>
   <%  @book.reviews.each do |r| %>
   <li> <%= r.title %> </li>

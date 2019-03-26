@@ -21,7 +21,7 @@
       <%= user.user %>:
       <%= user.num_reviews %>
       <% end %></p>
-  
+
 </div>
 
 <h2><%= link_to "Add Book", new_book_path %></h2>
@@ -35,8 +35,8 @@
   <p>Pages: <%= book.pages %></p>
   <p>Year: <%= book.year %></p>
 <img class="img-thumbnail" src="<%= book.cover_image %>">
-  <p><% book.authors.each do |a| %></p>
-  <p>Authors: <%= a.name %> </p>
+  <p><% book.authors.each do |author| %></p>
+  <p>Authors: <%= link_to author.name, author_path(author) %> </p>
   <% end %>
 <% end %>
 </div>
