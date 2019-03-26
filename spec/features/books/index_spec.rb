@@ -112,7 +112,6 @@ RSpec.describe "book_index", type: :feature do
       end
     end
     it 'When I visit the book index page i can sort' do
-
       visit books_path
       click_on "sort by rating asc"
       expect(page.all('.books')[0]).to have_content("#{@book_1.title}")

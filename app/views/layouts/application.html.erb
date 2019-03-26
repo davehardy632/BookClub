@@ -11,9 +11,9 @@
   </head>
 
   <body>
-    <nav>
-      <%= link_to "Home Page", welcome_path %> |
-      <%= link_to "All Books", books_path %>
+    <nav class="mini-bar">
+      <%= link_to "Home Page", welcome_path, class:"btn btn-primary" %>
+      <%= link_to "All Books", books_path, class:"btn btn-primary" %>
     </nav>
 
     <%= yield %>

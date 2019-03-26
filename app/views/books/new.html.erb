@@ -1,20 +1,22 @@
 
 <% if @book.errors.any? %>
+
 <% @book.errors.full_messages.each do |message| %>
   <li><%= message %></li>
 <% end %>
 <% end %>
 
 <%= form_for @book do |f| %>
-    <p><%= f.label :title%><br/>
+    <p class="text"><%= f.label :title%><br/>
     <%= f.text_field :title %></p>
-    <p><%= f.label :pages %><br/>
+    <p class="text"><%= f.label :pages %><br/>
     <%= f.text_field :pages %></p>
-    <p><%= f.label :year %><br/>
+    <p class="text"><%= f.label :year %><br/>
     <%= f.text_field :year %></p>
-    <p><%= f.label :cover_image %><br/>
+    <p class="text"><%= f.label :cover_image %><br/>
     <%= f.text_field :cover_image %></p>
-
-Authors <input type="text" name="authors[name]" multiple>
-    <p><%= f.submit :Submit %></p>
+    <p class="text">Authors</p>
+<input type="text" name="authors[name]" multiple>
+  
+    <p class="text"><%= f.submit :Submit, class:"btn btn-primary" %></p>
   <% end %>
