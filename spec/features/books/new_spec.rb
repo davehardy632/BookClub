@@ -9,7 +9,7 @@ RSpec.describe 'I can fill in a form and add a new book' do
     name = 'gaga'
     name_2 = 'john'
 
-    names = "gaga, john" 
+    names = "gaga, john"
 
     visit books_path
 
@@ -58,5 +58,14 @@ RSpec.describe 'I can fill in a form and add a new book' do
     expect(page).to have_content(updated_book.year)
     expect(page).to have_css("img[src*='#{default}']")
     expect(page).to have_content(name.titleize)
+  end
+  it 'new book - sad path, no entries' do
+    visit new_book_path
+
+    click_on 'Submit'
+
+    # expect(current_path).to eq(books_path)
+    expect(page).to have_content("Pages can't be blank")
+    expect(page).to have_content("Year can't be blank")
   end
 end
