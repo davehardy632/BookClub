@@ -40,9 +40,9 @@ RSpec.describe 'as a visitor' do
       visit user_path('Bill')
       click_on "Sort by Least Recent"
       # within("#review-title") do
-        expect(page.all('#review-title')[0]).to have_content("#{@r1.title}")
+        expect(page.all('#review-title')[2]).to have_content("#{@r1.title}")
         expect(page.all('#review-title')[1]).to have_content("#{@r3.title}")
-        expect(page.all('#review-title')[2]).to have_content("#{@r4.title}")
+        expect(page.all('#review-title')[0]).to have_content("#{@r4.title}")
       # end
     end
 
@@ -50,9 +50,9 @@ RSpec.describe 'as a visitor' do
       visit user_path('Bill')
       click_on "Sort by Most Recent"
       # within("#review-title") do
-        expect(page.all('#review-title')[0]).to have_content("#{@r4.title}")
+        expect(page.all('#review-title')[2]).to have_content("#{@r4.title}")
         expect(page.all('#review-title')[1]).to have_content("#{@r3.title}")
-        expect(page.all('#review-title')[2]).to have_content("#{@r1.title}")
+        expect(page.all('#review-title')[0]).to have_content("#{@r1.title}")
       # end
     end
 
