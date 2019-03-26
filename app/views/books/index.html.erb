@@ -1,43 +1,66 @@
-<h1>All Books</h1>
-<div class="sort">
-  <p> <%= link_to "sort by rating asc", books_path(sort: :rating, order: :asc) %> |
-   <%= link_to "sort by rating desc", books_path(sort: :rating, order: :desc) %> |
-   <%= link_to "sort by pages asc", books_path(sort: :pages, order: :asc) %> |
-   <%= link_to "sort by pages desc", books_path(sort: :pages, order: :desc) %> |
-   <%= link_to "sort by reviews asc", books_path(sort: :reviews, order: :asc) %> |
-   <%= link_to "sort by reviews desc", books_path(sort: :reviews, order: :desc) %> </p>
-</div>
+    <header class="navbar navbar-default">
+      <div class="sort container-fluid">
+        <div class="navbar-header">
+        <h1 class="navbar-brand">All Books</h1>
+        <p> <%= link_to "sort by rating asc", books_path(sort: :rating, order: :asc), class:"btn btn-primary" %> |
+          <%= link_to "sort by rating desc", books_path(sort: :rating, order: :desc), class:"btn btn-primary" %> |
+          <%= link_to "sort by pages asc", books_path(sort: :pages, order: :asc), class:"btn btn-primary" %> |
+          <%= link_to "sort by pages desc", books_path(sort: :pages, order: :desc), class:"btn btn-primary" %> |
+          <%= link_to "sort by reviews asc", books_path(sort: :reviews, order: :asc), class:"btn btn-primary" %> |
+          <%= link_to "sort by reviews desc", books_path(sort: :reviews, order: :desc), class:"btn btn-primary" %> </p>
+      </div>
+    </div>
 
-<div id="statistics" class="tron">
-  <p>Highest Rated Books: <% @highest_rated.each do |book| %>
-      <%= book.title %>:
-      <%= book.avg_rating.round(1) %>
-      <% end %> </p>
-  <p>Lowest Rated Books: <% @lowest_rated.each do |book| %>
-      <%= book.title %>:
-      <%= book.avg_rating.round(1) %>
-      <% end %></p>
-  <p>Most Active Users: <% @most_active_user.each do |user| %>
-      <%= user.user %>:
-      <%= user.num_reviews %>
-      <% end %></p>
+      <div id="statistics" class="tron ">
+        <p>Highest Rated Books: <% @highest_rated.each do |book| %>
+          <%= book.title %>:
+          <%= book.avg_rating.round(1) %>
+          <% end %> </p>
+        <p>Lowest Rated Books: <% @lowest_rated.each do |book| %>
+          <%= book.title %>:
+          <%= book.avg_rating.round(1) %>
+          <% end %></p>
+        <p>Most Active Users: <% @most_active_user.each do |user| %>
+          <%= user.user %>:
+          <%= user.num_reviews %>
+          <% end %></p>
+      </div>
+    </header>
 
-</div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">WebSiteName</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </div>
+    </nav>
 
-<h2><%= link_to "Add Book", new_book_path %></h2>
 
-<% @books.each do |book| %>
-<section class="books">
-<div id="book-<%= book.id %>">
-  <h2 class="book-title"><%= link_to "#{book.title}", book_path(book) %></h2>
-  <h3>Average Rating: <%= book.average_rating %> |
-    Total Reviews: <%= book.total_reviews %> </h3>
-  <p>Pages: <%= book.pages %></p>
-  <p>Year: <%= book.year %></p>
-<img class="img-thumbnail" src="<%= book.cover_image %>">
-  <p><% book.authors.each do |author| %></p>
-  <p>Authors: <%= link_to author.name, author_path(author) %> </p>
-  <% end %>
-<% end %>
-</div>
-</section>
+
+
+
+
+    <h2><%= link_to "Add Book", new_book_path %></h2>
+      <% @books.each do |book| %>
+    <section class="books">
+
+      <div id="book-<%= book.id %>">
+        <h3 class="book-title"><%= link_to "#{book.title}", book_path(book) %></h3>
+        <h4>Average Rating: <%= book.average_rating %> |
+        Total Reviews: <%= book.total_reviews %> </h4>
+        <p>Pages: <%= book.pages %></p>
+        <p>Year: <%= book.year %></p>
+          <img class="img-thumbnail" src="<%= book.cover_image %>">
+        <p><% book.authors.each do |author| %></p>
+        <p>Authors: <%= link_to author.name, author_path(author) %> </p>
+        <% end %>
+        <% end %>
+      </div>
+
+  </section>
