@@ -15,5 +15,6 @@
     <li><%= author.name %></li>
     <% end %>
   </ul>
+  <p class="remove"> <%= link_to "Delete Author", author_path(@author), method: :delete %> </p>
   </div>
 <% end %>
