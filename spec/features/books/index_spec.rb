@@ -112,7 +112,6 @@ RSpec.describe "book_index", type: :feature do
       end
     end
     it 'When I visit the book index page i can sort' do
-
       visit books_path
       click_on "sort by rating asc"
       expect(page.all('.books')[0]).to have_content("#{@book_1.title}")
@@ -139,7 +138,7 @@ RSpec.describe "book_index", type: :feature do
       expect(page.all('.books')[1]).to have_content("#{@book_2.title}")
       expect(page.all('.books')[2]).to have_content("#{@book_3.title}")
     end
-    xit 'I see an area showing statistics about all books' do
+    it 'I see an area showing statistics about all books' do
       visit books_path
       within("#statistics") do
         expect(page).to have_content("Highest Rated Books: #{@book_4.title}: 5.0 #{@book_5.title}: 5.0 #{@book_3.title}: 3.0")

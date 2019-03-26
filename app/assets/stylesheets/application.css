@@ -1,3 +1,38 @@
-h1 {
-  font-size: 40px;
+.navbar-brand {
+  font-size: 190%;
+  color: black;
+}
+
+.navbar-default {
+  background-image: url("https://img.freepik.com/free-photo/close-up-blank-old-concrete-wall_23-2147856094.jpg?size=626&ext=jpg");
+}
+
+h2 {
+  text-align: center;
+  background-color: DodgerBlue;
+  color: black;
+  /* background-image: url("https://img.freepik.com/free-photo/close-up-blank-old-concrete-wall_23-2147856094.jpg?size=626&ext=jpg");
+  /* border: 3 solid black; */
+}
+
+.stat {
+  text-align: center;
+  background-image: url("")
+}
+
+body {
+  background-attachment: fixed;
+  background-image: url("http://wuming.me/wp-content/uploads/web-page-background-color-15138-new-colors.jpg");
+}
+
+.mini-bar {
+  background-color: black;
+}
+
+nav p {
+  color: white;
+}
+
+.text {
+  color: white;
 }
