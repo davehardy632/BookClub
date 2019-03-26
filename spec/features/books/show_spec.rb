@@ -80,8 +80,9 @@ RSpec.describe 'As a visitor' do
 
       visit book_path(book_1)
 
-      click_on("#{review.user}")
-
+      within("#user-#{review.id}") do
+      click_on "#{review.user}"
+    end
       expect(current_path).to eq(user_path(review.user))
     end
   end

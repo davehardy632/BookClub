@@ -4,17 +4,17 @@
   <ul>
     <li><%= book.title %></li>
     <li><%= book.pages %></li>
+    <li>Published in <%= book.year %></li>
+    <li><img id="book-image-<%=book.id%>" src="<%= book.cover_image %>"></li>
     <% book.top_review.each do |review| %>
     <li><%= review.title %></li>
     <li><%= review.rating %></li>
-    <li><%= review.user %></li>
+    <li><%= link_to "#{review.user}", user_path(review.user) %></li>
     <% end %>
-    <li>Published in <%= book.year %></li>
-    <li><img id="book-image-<%=book.id%>" src="<%= book.cover_image %>"></li>
     <% book.return_authors(@author).each do |author| %>
-    <li><%= author.name %></li>
+    <li><%= link_to "#{author.name}", author_path(author) %></li>
+    <% end %>
     <% end %>
   </ul>
   <p class="remove"> <%= link_to "Delete Author", author_path(@author), method: :delete %> </p>
   </div>
-<% end %>
