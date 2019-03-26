@@ -6,15 +6,12 @@ class AuthorsController < ApplicationController
   end
 
   def destroy
-    binding.pry
-    book_ids = Author.find(params[:id]).books.pluck(:id)
-    book_ids.each do |id|
-      Review.where(book_id: id).destroy_all
-      BookAuthor.where(book_id: id).destroy_all
-      book = Book.find(id).destroy #if book.authors.count ==1
-    end
-    Author.find(params[:id]).destroy
+    book_ids = BookAuthor.where(author_id: params[:id]).pluck(:book_id)
+    Review.where(book_id: book_ids).destroy_all
+    author = params[:id]
+    ba = Book.joins(:book_authors).where('book_authors.author_id = ?',author)
+    ba.destroy_all
+
     redirect_to books_path
   end
-
 end
