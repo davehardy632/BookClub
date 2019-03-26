@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :destroy]
   end
 
+  # resources :books, only: [:new], params: {book: @book}
   resources :authors, only: [:show, :destroy]
 
   get '/', to: 'welcome#index', as: 'welcome'

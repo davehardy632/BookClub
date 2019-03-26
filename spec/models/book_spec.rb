@@ -7,6 +7,7 @@ RSpec.describe Book, type: :model do
     @book_1 = @gaga.books.create(title: "Book 1", pages: 300, year: 1973, cover_image: "www.book.com")
     @book_2 = @ted.books.create(title: "Book 2", pages: 340, year: 1988, cover_image: "www.book.com")
     @book_3 = @gaga.books.create(title: "Book 3", pages: 200, year: 1971, cover_image: "www.book.com")
+    @book_3.authors << @ted
     @review_1 = @book_1.reviews.create!(title: "a Review book 1", rating: 5, user: "John", description: "This book was upsetting." )
     @review_2 = @book_1.reviews.create!(title: "a Review book 1", rating: 3, user: "Jennica", description: "This book was pretty cool, but I wish it had more violence." )
     @review_3 = @book_1.reviews.create!(title: "a Review book 1", rating: 1, user: "Larry", description: "This book was boring." )
@@ -46,12 +47,13 @@ RSpec.describe Book, type: :model do
       review_8 = book_3.reviews.create(title: "the Review book 3", rating: 2, user: "Jennica", description: "Dont read this book to your children." )
       review_9 = book_3.reviews.create(title: "the Review book 3", rating: 4, user: "David", description: "A thrilling experience." )
 
-      actual = book_1.average_rating
-      expect(actual).to eq(3.0)
-      # expect(actual).to eq(expected)
-
       actual = @book_1.average_rating
       expect(actual).to eq(3.0)
+    end
+
+    it 'returns avg book rating - sad path' do
+      actual = @book_3.average_rating
+      expect(actual).to eq(0.0)
     end
 
     it 'returns all other authors' do
@@ -67,19 +69,27 @@ RSpec.describe Book, type: :model do
       expected = [author_2]
       expect(actual).to eq(expected)
     end
-    #
-    #   actual = @book_1.average_rating
-    #   expect(actual).to eq(3.0)
-    # end
-    it 'returns avg book rating - sad path' do
-      actual = @book_3.average_rating
-      expect(actual).to eq(0.0)
-    end
 
     it 'can calc total_reviews' do
       actual = @book_1.total_reviews
       expect(actual).to eq(3)
     end
+
+    it 'can calc top three reviews' do
+      actual = @book_1.top_three_reviews
+      expect(actual).to eq([@review_1, @review_2, @review_3])
+    end
+
+    it 'can calc the top review' do
+      actual = @book_1.top_review
+      expect(actual).to eq([@review_1])
+    end
+
+    it 'can calc return_authors' do
+      actual = @book_1.return_authors(@ted)
+      expect(actual).to eq([@gaga])
+    end
+
   end
 
   describe 'class methods' do

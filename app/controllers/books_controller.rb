@@ -20,8 +20,11 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
-    # @author = @book.authors.create(params[:name])
+    # begin
+      @book = Book.new#(book_params)
+    # rescue
+    #   @book = Book.new
+    # end
   end
 
   def create
@@ -29,14 +32,14 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.title = @title
     if @book.save
-    @a_params = author_params[:name].split(',')
-    @a_params.each do |name|
-      name = Author.find_or_create_by(name: name.titleize)
-      name.books << @book
-    end
-    redirect_to book_path(@book.id)
+      @a_params = author_params[:name].split(',')
+      @a_params.each do |name|
+        name = Author.find_or_create_by(name: name.titleize)
+        name.books << @book
+      end
+      redirect_to book_path(@book.id)
     else
-    render :new
+      render :new#new_book_path#_book_path(book: {tile: @book.title})
     end
   end
 
