@@ -39,7 +39,7 @@ RSpec.describe "book_index", type: :feature do
         expect(page).to_not have_content("Ken Follet")
         end
       end
-      xit 'books show highest rated review' do
+      it 'books show highest rated review' do
       author = Author.create(name: "Ken Follet")
       author_2 = Author.create(name: "Michael Crichton")
       author_3 = Author.create(name: "Miguel Crichton")

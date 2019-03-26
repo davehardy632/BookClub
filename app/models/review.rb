@@ -32,15 +32,6 @@ class Review < ApplicationRecord
           .order(created_at: :asc).entries
   end
 
-
-  # def reviews_by_rating(book, direction)
-  #    book.reviews.order(rating: direction).limit(3)
-  #  end
-  #
-  # def avg_rating
-  #   reviews.average(:rating)
-  # end
-
   def self.top_three
     order(rating: :desc).limit(3)
   end
