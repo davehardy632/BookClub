@@ -33,20 +33,22 @@
           <% end %></p>
       </div>
     </nav>
-      <% @books.each do |book| %>
-    <div class="grid-container">
+    <div class="container">
+    <% @books.each do |book| %>
+    <div class="book-card">
       <section class="books" >
         <div class="grid-item" id="book-<%= book.id %>">
           <h3 class="book-title"><%= link_to "#{book.title}", book_path(book) %></h3>
-          <h4 class="text">Average Rating: <%= book.average_rating %>
-          Total Reviews: <%= book.total_reviews %> </h4>
+          <p class="text">Average Rating: <%= book.average_rating %> </p>
+          <p class="text">Total Reviews: <%= book.total_reviews %> </p>
           <p class="text">Pages: <%= book.pages %></p>
           <p class="text">Year: <%= book.year %></p>
           <img class="img-thumbnail" src="<%= book.cover_image %>">
           <p class="text"><% book.authors.each do |author| %></p>
           <p class="text">Authors: <%= link_to author.name, author_path(author) %> </p>
           <% end %>
+        </div>
+      </section>
+    </div>
           <% end %>
-      </div>
-    </section>
-</div>
+  </div>
