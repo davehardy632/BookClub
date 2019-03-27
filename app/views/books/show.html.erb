@@ -7,7 +7,7 @@
           <% @reviews.top_three.each do |review| %>
           <ol class="list"><%= review.title %></ol>
           <ol class="list"><%= review.rating %></ol>
-          <ol class="list" id="user-<%= "#{review.id}" %>"> <%= link_to "#{review.user}", user_path(review.user)  %></ol>
+          <ol class="list" id="users-<%= "#{review.id}" %>"> <%= link_to "#{review.user}", user_path(review.user)  %></ol>
           <% end %>
           <li class="list">Bottom three reviews:</li>
           <% @reviews.bottom_three.each do |review| %>
