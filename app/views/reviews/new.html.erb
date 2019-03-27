@@ -7,17 +7,17 @@
 
 <div class="form">
   <%= form_for [@book, @review] do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <p class="text"><%= f.label :title %></br>
+    <%= f.text_field :title %></p>
 
-    <%= f.label :rating %>
-    <%= f.text_field :rating %>
+    <p class="text"><%= f.label :rating %></br>
+    <%= f.text_field :rating %></p>
 
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+    <p class="text"><%= f.label :description %></br>
+    <%= f.text_field :description %></p>
 
-    <%= f.label :user %>
-    <%= f.text_field :user %>
+    <p class="text"><%= f.label :user %></br>
+    <%= f.text_field :user %></p>
 
     <%= f.submit %>
   <% end %>
