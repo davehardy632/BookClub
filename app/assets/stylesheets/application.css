@@ -11,8 +11,8 @@ h2 {
   text-align: center;
   background-color: DodgerBlue;
   color: black;
-  /* background-image: url("https://img.freepik.com/free-photo/close-up-blank-old-concrete-wall_23-2147856094.jpg?size=626&ext=jpg");
-  /* border: 3 solid black; */
+  font-family: serif;
+
 }
 
 .stat {
@@ -35,8 +35,32 @@ nav p {
 
 .text {
   color: white;
+  font-family: serif;
 }
 
 .welcome {
   color: white;
+  font-family: serif;
+}
+
+.book {
+  color: white;
+  font-family: serif;
+}
+
+.img-thumbnail {
+  width: 20%;
+}
+
+.img-show {
+  width: 20%;
+}
+
+.list {
+  color: white;
+  font-family: serif;
+}
+
+.grid-container {
+  display: grid;
 }

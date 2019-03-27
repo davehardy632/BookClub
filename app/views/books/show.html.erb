@@ -2,34 +2,34 @@
 <div>
   <ul>
 
-      <li>Average Rating: <%= @book.average_rating %></li>
-      <li>top three reviews: </li>
+      <li class="list">Average Rating: <%= @book.average_rating %></li>
+      <li class="list">top three reviews: </li>
           <% @reviews.top_three.each do |review| %>
-          <ol><%= review.title %></ol>
-          <ol><%= review.rating %></ol>
-          <ol><%= review.user %></ol>
+          <ol class="list"><%= review.title %></ol>
+          <ol class="list"><%= review.rating %></ol>
+          <ol class="list" id="user-<%= "#{review.id}" %>"> <%= link_to "#{review.user}", user_path(review.user)  %></ol>
           <% end %>
-          <li>Bottom three reviews:</li>
+          <li class="list">Bottom three reviews:</li>
           <% @reviews.bottom_three.each do |review| %>
-        <ol><%= review.title %></ol>
-        <ol><%= review.rating %></ol>
-        <ol id="user-<%= "#{review.id}" %>" > <%= link_to "#{review.user}", user_path(review.user)  %></ol>
+        <ol class="list"><%= review.title %></ol>
+        <ol class="list"><%= review.rating %></ol>
+        <ol class="list" id="user-<%= "#{review.id}" %>"> <%= link_to "#{review.user}", user_path(review.user)  %></ol>
         <% end %>
     </ul>
   </div>
-<h1> <%=  @book.title %></h1>
+<h1 class="list"> <%=  @book.title %></h1>
 <ul>
-  <li><%= @book.pages %></li>
-  <li><%= @book.year %></li>
-  <li> <img src="<%= @book.cover_image %>" alt="book"> </li>
-  <li> <% @book.authors.each do |author| %> </li>
-  <li> <%= link_to author.name, author_path(author) %> </li>
+  <li class="list"><%= @book.pages %></li>
+  <li class="list"><%= @book.year %></li>
+  <li> <img class="img-show" src="<%= @book.cover_image %>" alt="book"> </li>
+  <li class="list"> <% @book.authors.each do |author| %> </li>
+  <li class="list"> <%= link_to author.name, author_path(author) %> </li>
 <% end %>
   <%  @book.reviews.each do |r| %>
-  <li> <%= r.title %> </li>
-  <li> <%= r.rating %></li>
-  <li> <%= r.description %></li>
-  <li> <%=link_to "#{r.user}", user_path(r.user) %></li>
+  <li class="list"> <%= r.title %> </li>
+  <li class="list"> <%= r.rating %></li>
+  <li class="list"> <%= r.description %></li>
+  <li class="list"> <%=link_to "#{r.user}", user_path(r.user) %></li>
 <% end %>
 </ul>
 <h3> <%= link_to "New Review", new_book_review_path(@book.id) %></h3>
