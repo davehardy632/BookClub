@@ -112,28 +112,29 @@ RSpec.describe "book_index", type: :feature do
       end
     end
     it 'When I visit the book index page i can sort' do
+
       visit books_path
-      click_on "sort by rating asc"
+      click_on "Lowest Rated"
       expect(page.all('.books')[0]).to have_content("#{@book_1.title}")
       expect(page.all('.books')[1]).to have_content("#{@book_2.title}")
       expect(page.all('.books')[2]).to have_content("#{@book_3.title}")
-      click_on "sort by rating desc"
+      click_on "Highest Rated"
       expect(page.all('.books')[0]).to have_content("#{@book_3.title}")
       expect(page.all('.books')[1]).to have_content("#{@book_2.title}")
       expect(page.all('.books')[2]).to have_content("#{@book_1.title}")
-      click_on "sort by pages asc"
+      click_on "Lowest Page Count"
       expect(page.all('.books')[0]).to have_content("#{@book_3.title}")
       expect(page.all('.books')[1]).to have_content("#{@book_1.title}")
       expect(page.all('.books')[2]).to have_content("#{@book_2.title}")
-      click_on "sort by pages desc"
+      click_on "Highest Page Count"
       expect(page.all('.books')[0]).to have_content("#{@book_2.title}")
       expect(page.all('.books')[1]).to have_content("#{@book_1.title}")
       expect(page.all('.books')[2]).to have_content("#{@book_3.title}")
-      click_on "sort by reviews desc"
+      click_on "Most Reviewed"
       expect(page.all('.books')[0]).to have_content("#{@book_3.title}")
       expect(page.all('.books')[1]).to have_content("#{@book_2.title}")
       expect(page.all('.books')[2]).to have_content("#{@book_1.title}")
-      click_on "sort by reviews asc"
+      click_on "Least Reviewed"
       expect(page.all('.books')[0]).to have_content("#{@book_1.title}")
       expect(page.all('.books')[1]).to have_content("#{@book_2.title}")
       expect(page.all('.books')[2]).to have_content("#{@book_3.title}")

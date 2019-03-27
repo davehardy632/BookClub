@@ -1,18 +1,18 @@
-<h1><%= @author.name %> Show Page</h1>
+<h1 class="text"><%= @author.name %> Show Page</h1>
 <% @author.books.each do |book| %>
 <div id="book-id-<%=book.id%>">
   <ul>
-    <li><%= book.title %></li>
-    <li><%= book.pages %></li>
-    <li>Published in <%= book.year %></li>
-    <li><img id="book-image-<%=book.id%>" src="<%= book.cover_image %>"></li>
+    <li class="book"><%= book.title %></li>
+    <li class="book"><%= book.pages %></li>
+    <li class="book">Published in <%= book.year %></li>
+    <li><img class="img-thumbnail" id="book-image-<%=book.id%>" src="<%= book.cover_image %>"></li>
     <% book.top_review.each do |review| %>
-    <li><%= review.title %></li>
-    <li><%= review.rating %></li>
-    <li><%= link_to "#{review.user}", user_path(review.user) %></li>
+    <li class="book"><%= review.title %></li>
+    <li class="book"><%= review.rating %></li>
+    <li class="book"><%= link_to "#{review.user}", user_path(review.user) %></li>
     <% end %>
     <% book.return_authors(@author).each do |author| %>
-    <li><%= link_to "#{author.name}", author_path(author) %></li>
+    <li class="book"><%= link_to "#{author.name}", author_path(author) %></li>
     <% end %>
     <% end %>
   </ul>

@@ -6,12 +6,12 @@
           <ul  class="nav navbar-nav" >
 
             <p class="active"> <%= link_to "Add Book", new_book_path, class:"btn btn-primary"%>
-            <%= link_to "sort by rating asc", books_path(sort: :rating, order: :asc), class:"btn btn-primary" %>
-            <%= link_to "sort by rating desc", books_path(sort: :rating, order: :desc), class:"btn btn-primary" %>
-            <%= link_to "sort by pages asc", books_path(sort: :pages, order: :asc), class:"btn btn-primary" %>
-            <%= link_to "sort by pages desc", books_path(sort: :pages, order: :desc), class:"btn btn-primary" %>
-            <%= link_to "sort by reviews asc", books_path(sort: :reviews, order: :asc), class:"btn btn-primary" %>
-            <%= link_to "sort by reviews desc", books_path(sort: :reviews, order: :desc), class:"btn btn-primary" %>
+            <%= link_to "Lowest Rated", books_path(sort: :rating, order: :asc), class:"btn btn-primary" %>
+            <%= link_to "Highest Rated", books_path(sort: :rating, order: :desc), class:"btn btn-primary" %>
+            <%= link_to "Lowest Page Count", books_path(sort: :pages, order: :asc), class:"btn btn-primary" %>
+            <%= link_to "Highest Page Count", books_path(sort: :pages, order: :desc), class:"btn btn-primary" %>
+            <%= link_to "Least Reviewed", books_path(sort: :reviews, order: :asc), class:"btn btn-primary" %>
+            <%= link_to "Most Reviewed", books_path(sort: :reviews, order: :desc), class:"btn btn-primary" %>
           </p>
           </ul>
         </div>
@@ -33,29 +33,20 @@
           <% end %></p>
       </div>
     </nav>
-
-    <!-- <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div> -->
-
       <% @books.each do |book| %>
-
-    <section class="books"class="flex-container">
-      <div id="book-<%= book.id %>">
-        <h3 class="book-title"><%= link_to "#{book.title}", book_path(book) %></h3>
-        <h4 class="text">Average Rating: <%= book.average_rating %> |
-        Total Reviews: <%= book.total_reviews %> </h4>
-        <p class="text">Pages: <%= book.pages %></p>
-        <p class="text">Year: <%= book.year %></p>
+    <div class="grid-container">
+      <section class="books" >
+        <div class="grid-item" id="book-<%= book.id %>">
+          <h3 class="book-title"><%= link_to "#{book.title}", book_path(book) %></h3>
+          <h4 class="text">Average Rating: <%= book.average_rating %>
+          Total Reviews: <%= book.total_reviews %> </h4>
+          <p class="text">Pages: <%= book.pages %></p>
+          <p class="text">Year: <%= book.year %></p>
           <img class="img-thumbnail" src="<%= book.cover_image %>">
-        <p class="text"><% book.authors.each do |author| %></p>
-        <p class="text">Authors: <%= link_to author.name, author_path(author) %> </p>
-        <% end %>
-        <% end %>
+          <p class="text"><% book.authors.each do |author| %></p>
+          <p class="text">Authors: <%= link_to author.name, author_path(author) %> </p>
+          <% end %>
+          <% end %>
       </div>
-  </section>
+    </section>
+</div>
